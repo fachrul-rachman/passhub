@@ -56,8 +56,8 @@ class _SignUpPageState extends State<SignUpPage> {
             children: [
               Container(
                 width: 155.w,
-                height: 50.h,
-                margin: EdgeInsets.only(top: 100.h, bottom: 90.h),
+                height: 100.h,
+                margin: EdgeInsets.only(top: 90.h, bottom: 50.h),
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage('assets/logodummy.png'),
@@ -84,19 +84,16 @@ class _SignUpPageState extends State<SignUpPage> {
                     CustomFormField(
                       controller: fullNameController,
                       title: 'Full Name',
-                      isShowTitle: false,
                     ),
-                    const SizedBox(height: 16),
+                    SizedBox(height: 20.h),
                     CustomFormField(
                       controller: usernameController,
                       title: 'Username',
-                      isShowTitle: false,
                     ),
-                    const SizedBox(height: 16),
+                    SizedBox(height: 20.h),
                     CustomFormField(
                       controller: pinController,
                       title: 'Pin',
-                      isShowTitle: false,
                       isPin: true,
                       obscureText: true,
                       keyboardType: TextInputType.number,

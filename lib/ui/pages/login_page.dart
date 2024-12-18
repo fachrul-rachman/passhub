@@ -28,122 +28,129 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: blueDarkColor,
-      body: BlocConsumer<AuthBloc, AuthState>(
-        listener: (context, state) {
-          if (state is AuthFailed) {
-            showCustomSnackbar(context, state.e);
-          }
-          if (state is AuthSuccess) {
-            Navigator.pushNamedAndRemoveUntil(
-                context, '/home', (route) => false);
-          }
-        },
-        builder: (context, state) {
-          if (state is AuthLoading) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-          return ListView(
-            padding: EdgeInsets.symmetric(
-              horizontal: 24,
-            ),
-            children: [
-              Container(
-                width: 155.w,
-                height: 50.h,
-                margin: EdgeInsets.only(
-                  top: 100.h,
-                  bottom: 100.h,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: blueDarkColor,
+        body: BlocConsumer<AuthBloc, AuthState>(
+          listener: (context, state) {
+            if (state is AuthFailed) {
+              showCustomSnackbar(context, state.e);
+            }
+            if (state is AuthSuccess) {
+              Navigator.pushNamedAndRemoveUntil(
+                  context, '/home', (route) => false);
+            }
+          },
+          builder: (context, state) {
+            if (state is AuthLoading) {
+              return Center(
+                child: CircularProgressIndicator(
+                  color: redColor,
                 ),
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(
-                      'assets/logodummy.png',
+              );
+            }
+            return ListView(
+              padding: EdgeInsets.symmetric(
+                horizontal: 24,
+              ),
+              children: [
+                Container(
+                  width: 155.w,
+                  height: 100.h,
+                  margin: EdgeInsets.only(
+                    top: 50.h,
+                    bottom: 50.h,
+                  ),
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage(
+                        'assets/logodummy.png',
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Text(
-                'Sign In & Protect\nYour Passwords',
-                style: greenTextStyle.copyWith(
-                  fontSize: 20,
-                  fontWeight: semiBold,
+                Text(
+                  'Sign In & Protect\nYour Passwords',
+                  style: greenTextStyle.copyWith(
+                    fontSize: 20,
+                    fontWeight: semiBold,
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: 30.h,
-              ),
-              Container(
-                padding: const EdgeInsets.all(22),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: greenColor,
+                SizedBox(
+                  height: 30.h,
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CustomFormField(
-                      controller: usernameController,
-                      title: 'Username',
-                      isShowTitle: false,
-                    ),
-                    SizedBox(
-                      height: 16.h,
-                    ),
-                    CustomFormField(
-                      controller: pinController,
-                      title: 'pin',
-                      isShowTitle: false,
-                      isPin: true,
-                      obscureText: true,
-                      keyboardType: TextInputType.number,
-                    ),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: Text(
-                        'Forgot Password',
-                        style: redTextStyle,
+                Container(
+                  padding: const EdgeInsets.all(22),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: greenColor,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CustomFormField(
+                        controller: usernameController,
+                        title: 'Username',
+                        isShowTitle: false,
                       ),
-                    ),
-                    SizedBox(
-                      height: 30.h,
-                    ),
-                    CustomFilledButton(
-                      title: 'Sign In',
-                      onPressed: () {
-                        if (validate()) {
-                          context.read<AuthBloc>().add(
-                                AuthLogin(
-                                  SignInFormModel(
-                                    username: usernameController.text,
-                                    pin: pinController.text,
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      CustomFormField(
+                        controller: pinController,
+                        title: 'pin',
+                        isShowTitle: false,
+                        isPin: true,
+                        obscureText: true,
+                        keyboardType: TextInputType.number,
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Text(
+                          'Forgot Password',
+                          style: redTextStyle,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 30.h,
+                      ),
+                      CustomFilledButton(
+                        title: 'Sign In',
+                        onPressed: () {
+                          if (validate()) {
+                            context.read<AuthBloc>().add(
+                                  AuthLogin(
+                                    SignInFormModel(
+                                      username: usernameController.text,
+                                      pin: pinController.text,
+                                    ),
                                   ),
-                                ),
-                              );
-                        } else {
-                          showCustomSnackbar(
-                              context, 'Semua field harus di isi');
-                        }
-                      },
-                    ),
-                  ],
+                                );
+                          } else {
+                            showCustomSnackbar(
+                                context, 'Semua field harus di isi');
+                          }
+                        },
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: 30.h,
-              ),
-              CustomTextButton(
-                title: "Create New Account",
-                onPressed: () {
-                  Navigator.pushNamed(context, '/sign-up');
-                },
-              ),
-            ],
-          );
-        },
+                SizedBox(
+                  height: 30.h,
+                ),
+                CustomTextButton(
+                  title: "Create New Account",
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/sign-up');
+                  },
+                ),
+              ],
+            );
+          },
+        ),
       ),
     );
   }

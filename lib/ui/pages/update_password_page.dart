@@ -47,145 +47,145 @@ class _UpdatePasswordPageState extends State<UpdatePasswordPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: blueDarkColor,
-      body: ListView(
-        padding: EdgeInsets.symmetric(
-          horizontal: 24,
-        ),
-        children: [
-          Container(
-            margin: EdgeInsets.only(top: 40.h),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Update Your',
-                  style: greenTextStyle.copyWith(
-                    fontSize: 36,
-                    fontWeight: medium,
-                  ),
-                ),
-                RichText(
-                  text: TextSpan(
-                    children: [
-                      TextSpan(
-                        text: 'Own ',
-                        style: redTextStyle.copyWith(
-                          fontSize: 36,
-                          fontWeight: bold,
-                        ),
-                      ),
-                      TextSpan(
-                        text: 'Password',
-                        style: greenTextStyle.copyWith(
-                          fontSize: 36,
-                          fontWeight: medium,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: blueDarkColor,
+        body: ListView(
+          padding: EdgeInsets.symmetric(
+            horizontal: 24,
           ),
-          SizedBox(
-            height: 40.h,
-          ),
-          Container(
-            padding: const EdgeInsets.all(22),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              // image: DecorationImage(
-              //   image: NetworkImage(widget.passwordModel.imgPlatform ?? ''),
-              // ),
-              color: greenColor,
-            ),
-            child: Column(
-              children: [
-                Container(
-                  width: 97.w,
-                  height: 97.h,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    image: DecorationImage(
-                      image:
-                          NetworkImage(widget.passwordModel.imgPlatform ?? ''),
+          children: [
+            Container(
+              margin: EdgeInsets.only(top: 20.h),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Update Your',
+                    style: greenTextStyle.copyWith(
+                      fontSize: 36,
+                      fontWeight: medium,
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: 22.h,
-                ),
-                Text(
-                  'Make A Password',
-                  style: blueTextStyle.copyWith(
-                    fontSize: 18,
+                  RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: 'Own ',
+                          style: redTextStyle.copyWith(
+                            fontSize: 36,
+                            fontWeight: bold,
+                          ),
+                        ),
+                        TextSpan(
+                          text: 'Password',
+                          style: greenTextStyle.copyWith(
+                            fontSize: 36,
+                            fontWeight: medium,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: 20.h,
-                ),
-                CustomFormFieldUpdate(
-                  title: 'Platform',
-                  controller: platformController,
-                  isShowTitle: false,
-                  onlyRead: true,
-                ),
-                SizedBox(
-                  height: 16.h,
-                ),
-                CustomFormFieldUpdate(
-                  title: 'Account Id',
-                  controller: emailController,
-                  isShowTitle: false,
-                ),
-                SizedBox(
-                  height: 16.h,
-                ),
-                CustomFormFieldUpdate(
-                  title: 'Password',
-                  controller: passwordController,
-                  isShowTitle: false,
-                  obscureText: true,
-                  isPin: true,
-                ),
-                SizedBox(
-                  height: 16.h,
-                ),
-                CustomFormFieldUpdate(
-                  title: 'Category',
-                  controller: categoryController,
-                  isShowTitle: false,
-                  obscureText: false,
-                  onlyRead: true,
-                ),
-                SizedBox(
-                  height: 22.h,
-                ),
-                CustomFilledButton(
-                  title: 'Update',
-                  onPressed: () {
-                    // final updatePassword = PasswordModel(
-                    //   id: widget.passwordModel.id,
-                    //   platform: platformController.text,
-                    //   imgPlatform: widget.passwordModel.imgPlatform,
-                    //   email: emailController.text,
-                    //   password: passwordController.text,
-                    //   categoryId: widget.passwordModel.categoryId,
-                    //   categoryName: categoryController.text,
-                    // );
-                    //
-                    // context.read<PasswordBloc>().add(
-                    //       PasswordUpdate(updatedPassword),
-                    //     );
-                    // Navigator.pop(context);
-                  },
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+            SizedBox(
+              height: 40.h,
+            ),
+            Container(
+              padding: const EdgeInsets.all(22),
+              margin: EdgeInsets.only(bottom: 20.h),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: greenColor,
+              ),
+              child: Column(
+                children: [
+                  Container(
+                    width: 97.w,
+                    height: 97.h,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      image: DecorationImage(
+                        image: NetworkImage(
+                            widget.passwordModel.imgPlatform ?? ''),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 22.h,
+                  ),
+                  Text(
+                    'Make A Password',
+                    style: blueTextStyle.copyWith(
+                      fontSize: 18,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  CustomFormFieldUpdate(
+                    title: 'Platform',
+                    controller: platformController,
+                    isShowTitle: false,
+                    onlyRead: true,
+                  ),
+                  SizedBox(
+                    height: 16.h,
+                  ),
+                  CustomFormFieldUpdate(
+                    title: 'Account Id',
+                    controller: emailController,
+                    isShowTitle: false,
+                  ),
+                  SizedBox(
+                    height: 16.h,
+                  ),
+                  CustomFormFieldUpdate(
+                    title: 'Password',
+                    controller: passwordController,
+                    isShowTitle: false,
+                    obscureText: true,
+                    isPin: true,
+                  ),
+                  SizedBox(
+                    height: 16.h,
+                  ),
+                  CustomFormFieldUpdate(
+                    title: 'Category',
+                    controller: categoryController,
+                    isShowTitle: false,
+                    obscureText: false,
+                    onlyRead: true,
+                  ),
+                  SizedBox(
+                    height: 22.h,
+                  ),
+                  CustomFilledButton(
+                    title: 'Update',
+                    onPressed: () {
+                      // final updatePassword = PasswordModel(
+                      //   id: widget.passwordModel.id,
+                      //   platform: platformController.text,
+                      //   imgPlatform: widget.passwordModel.imgPlatform,
+                      //   email: emailController.text,
+                      //   password: passwordController.text,
+                      //   categoryId: widget.passwordModel.categoryId,
+                      //   categoryName: categoryController.text,
+                      // );
+                      //
+                      // context.read<PasswordBloc>().add(
+                      //       PasswordUpdate(updatedPassword),
+                      //     );
+                      // Navigator.pop(context);
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

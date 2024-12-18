@@ -50,7 +50,7 @@ class _HomeCardItemState extends State<HomeCardItem> {
                 bottom: 15.w,
               ),
               width: 331.w,
-              height: 144.h,
+              height: 150.h,
               padding: EdgeInsets.symmetric(
                 horizontal: 12.w,
                 vertical: 12.h,
@@ -144,31 +144,27 @@ class _HomeCardItemState extends State<HomeCardItem> {
                   Row(
                     children: [
                       ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: AspectRatio(
-                          aspectRatio: 1.0,
-                          child: Image.network(
-                            widget.passwordModel.imgPlatform!,
-                            width: 71.w,
-                            height: 71.h,
-                            fit: BoxFit.cover,
-                            errorBuilder: (context, error, stackTrace) {
-                              return Container(
-                                height: 71.h,
-                                width: 71.w,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10.r),
-                                  color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                        child: Image.network(
+                          widget.passwordModel.imgPlatform!,
+                          width: 71.w,
+                          height: 71.h,
+                          errorBuilder: (context, error, stackTrace) {
+                            return Container(
+                              height: 71.h,
+                              width: 71.w,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10.r),
+                                color: Colors.white,
+                              ),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(10),
+                                child: Image.asset(
+                                  'assets/logodummy.png',
                                 ),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(10),
-                                  child: Image.asset(
-                                    'assets/logodummy.png',
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
+                              ),
+                            );
+                          },
                         ),
                       ),
                       SizedBox(
@@ -188,11 +184,11 @@ class _HomeCardItemState extends State<HomeCardItem> {
                             height: 1.h,
                           ),
                           Text(
-                            widget.passwordModel.email.toString(),
-                            style: blueTextStyle.copyWith(
-                              fontSize: 15.sp,
-                            ),
-                          )
+                            widget.passwordModel.email!.length > 15
+                                ? '${widget.passwordModel.email!.substring(0, 15)}...'
+                                : widget.passwordModel.email.toString(),
+                            style: blueTextStyle.copyWith(fontSize: 15.sp),
+                          ),
                         ],
                       )
                     ],

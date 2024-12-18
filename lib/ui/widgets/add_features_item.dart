@@ -58,7 +58,7 @@ class _AddFeaturesItemState extends State<AddFeaturesItem> {
                 TextSpan(
                     text: widget.category,
                     style: blueTextStyle.copyWith(
-                        fontSize: 20.sp, fontWeight: medium)),
+                        fontSize: 18.sp, fontWeight: medium)),
                 TextSpan(
                   text: widget.subtitle,
                   style: blueTextStyle.copyWith(
@@ -77,7 +77,7 @@ class _AddFeaturesItemState extends State<AddFeaturesItem> {
                   width: 30.w,
                   height: 30.h,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(6),
+                    borderRadius: BorderRadius.circular(6.r),
                     color: blueDarkColor,
                   ),
                   child: Icon(
@@ -100,7 +100,7 @@ class _AddFeaturesItemState extends State<AddFeaturesItem> {
                   width: 30.w,
                   height: 30.h,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(6),
+                    borderRadius: BorderRadius.circular(6.r),
                     color: blueDarkColor,
                   ),
                   child: Icon(

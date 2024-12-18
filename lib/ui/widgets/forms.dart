@@ -25,18 +25,6 @@ class CustomFormField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (isShowTitle)
-          Text(
-            title,
-            style: blueTextStyle.copyWith(
-              fontSize: 14,
-              fontWeight: medium,
-            ),
-          ),
-        if (isShowTitle)
-          const SizedBox(
-            height: 8,
-          ),
         TextFormField(
           obscureText: obscureText,
           controller: controller,
@@ -46,12 +34,13 @@ class CustomFormField extends StatelessWidget {
             hintStyle: blueTextStyle.copyWith(
               fontSize: 14,
             ),
-            hintText: !isShowTitle ? title : null,
+            hintText: title,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
               borderSide: BorderSide(color: blueDarkColor),
             ),
             contentPadding: const EdgeInsets.all(12),
+            counterText: '',
           ),
           onFieldSubmitted: onFieldSubmitted,
         ),
